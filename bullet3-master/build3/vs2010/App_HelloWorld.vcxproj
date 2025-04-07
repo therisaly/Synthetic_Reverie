@@ -236,6 +236,12 @@
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="tiny_obj_loader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="models\Earth.obj" />
+    <Object Include="models\road.obj" />
+    <Object Include="models\rotatingPlatform.obj" />
+    <Object Include="models\rotatingPlatform1.obj" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

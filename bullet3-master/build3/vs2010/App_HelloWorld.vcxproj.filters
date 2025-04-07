@@ -60,4 +60,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="models\Earth.obj" />
+    <Object Include="models\road.obj" />
+    <Object Include="models\rotatingPlatform.obj" />
+    <Object Include="models\rotatingPlatform1.obj" />
+  </ItemGroup>
 </Project>
