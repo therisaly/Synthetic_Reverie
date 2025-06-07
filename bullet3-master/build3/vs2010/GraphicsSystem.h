@@ -30,13 +30,13 @@ public:
 		GLfloat lightDiffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };  // White diffuse light
 		GLfloat lightSpecular[] = { 0.0f, 0.0f, 0.0f, 0.0f };  // White specular light
 
-		glEnable(GL_FOG);
-		GLfloat fogColor[] = { 0.8f, 0.8f, 0.8f, 1.0f };  // Light gray fog
-		glFogfv(GL_FOG_COLOR, fogColor);
-		glFogi(GL_FOG_MODE, GL_EXP);  // Linear fog gives a gradual fade
-		glFogf(GL_FOG_START, 5.0f);
-		glFogf(GL_FOG_END, 25.0f);
-		glFogf(GL_FOG_DENSITY, 0.02f);  // Very subtle fog effect
+		//glEnable(GL_FOG);
+		//GLfloat fogColor[] = { 0.8f, 0.8f, 0.8f, 1.0f };  // Light gray fog
+		//glFogfv(GL_FOG_COLOR, fogColor);
+		//glFogi(GL_FOG_MODE, GL_EXP);  // Linear fog gives a gradual fade
+		//glFogf(GL_FOG_START, 5.0f);
+		//glFogf(GL_FOG_END, 25.0f);
+		//glFogf(GL_FOG_DENSITY, 0.1f);  // Very subtle fog effect
 
 
 		// Set the light source properties

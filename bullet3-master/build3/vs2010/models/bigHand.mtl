@@ -1,0 +1,24 @@
+# Blender 4.3.2 MTL File: 'None'
+# www.blender.org
+
+newmtl body
+Ns 41.169567
+Ka 1.000000 1.000000 1.000000
+Kd 0.307698 0.221103 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl object
+Ns 35.718479
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+map_Kd models/bigHand.png
+map_d models/bigHand.png

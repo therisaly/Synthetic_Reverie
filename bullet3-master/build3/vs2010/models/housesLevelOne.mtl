@@ -1,0 +1,12 @@
+# Blender 4.3.2 MTL File: 'level1OpenGL.blend'
+# www.blender.org
+
+newmtl _Front_Gable_House_v1_NEW:_20960_Front_Gable_House_v101_398ec47
+Ns 119.999992
+Ka 0.500000 0.500000 0.500000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+map_Kd models/20960_Front_Gable_House_texture.jpg

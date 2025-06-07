@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalOptions>/MP /wd4244 /wd4267 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MP /wd4244 /wd4267 /FS %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>..\..\src;C:\Users\teodo\Downloads\bullet3-master\bullet3-master\build3\vs2010\glewAndGlut\freeglut\include;C:\Users\teodo\Downloads\bullet3-master\bullet3-master\build3\vs2010\glewAndGlut\glew-1.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -155,7 +155,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalOptions>/MP /wd4244 /wd4267 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MP /wd4244 /wd4267 /FS %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\src;glewAndGlut\freeglut\include;glewAndGlut\glew-1.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION;_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -217,30 +217,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ClockObstacle.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="MovableObject.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="tiny_obj_loader.cpp" />
+    <ClCompile Include="TriggerCollider.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClockObstacle.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="BulletDebugDrawer.h" />
     <ClInclude Include="Components.h" />
+    <ClInclude Include="CustomMotionState.h" />
+    <ClInclude Include="EnemyChase.h" />
     <ClInclude Include="FreeGLUTCallbacks.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GraphicsSystem.h" />
+    <ClInclude Include="IEvent.h" />
+    <ClInclude Include="IEventListener.h" />
+    <ClInclude Include="IMovement.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelsIterator.h" />
     <ClInclude Include="MeshLoader.h" />
-    <ClInclude Include="MovableObject.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="OpenGLAppConfiguration.h" />
-    <ClInclude Include="OpenGLMotionState.h" />
     <ClInclude Include="PhysicsSystem.h" />
+    <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="tiny_obj_loader.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="models\Earth.obj" />
-    <Object Include="models\road.obj" />
-    <Object Include="models\rotatingPlatform.obj" />
-    <Object Include="models\rotatingPlatform1.obj" />
+    <ClInclude Include="TriggerCollider.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

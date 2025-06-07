@@ -14,6 +14,14 @@ public:
 	{
 		return *dynamicsWorld;
 	}
+	void AddRigidBody(btRigidBody* body)
+	{
+		dynamicsWorld->addRigidBody(body);
+	}
+	void StepSimulation(float deltaTime)
+	{
+		dynamicsWorld->stepSimulation(deltaTime, 10);
+	}
 private:
 	PhysicsSystem()
 	{
@@ -23,14 +31,15 @@ private:
 		solver = new btSequentialImpulseConstraintSolver();
 		dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver,
 			collisionConfig);
+		dynamicsWorld->setGravity(btVector3(0, -40.0f, 0));
 	}
 	~PhysicsSystem()
 	{
-		delete collisionConfig;
-		delete dispatcher;
-		delete broadphase;
-		delete solver;
 		delete dynamicsWorld;
+		delete solver;
+		delete broadphase;
+		delete dispatcher;
+		delete collisionConfig;
 	}
 private:
 	// 1. Collision configuration (manages collision detection algorithms)

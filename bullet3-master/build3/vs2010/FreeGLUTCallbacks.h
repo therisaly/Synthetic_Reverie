@@ -13,10 +13,10 @@
 #include "GraphicsSystem.h"
 
 
+
 static Game* game; 
 static OpenGLAppConfiguration config;
 btClock _clock;
-
 
 static void UpdateCamera()
 {
@@ -75,22 +75,23 @@ static void ZoomCamera(float distance) {
 }
 
 static void KeyboardCallback(unsigned char key, int x, int y) {
-	switch (key) {
-	case 'z': 
-		ZoomCamera(+CAMERA_STEP_SIZE);
+	switch (key)
+	{
+	case 'x': // Zoom in
+		ZoomCamera(-CAMERA_STEP_SIZE); // Negative to move closer
 		break;
-	case 'x':
-		ZoomCamera(-CAMERA_STEP_SIZE);
+	case 'c': // Zoom out
+		ZoomCamera(CAMERA_STEP_SIZE);  // Positive to move away
 		break;
-	case 'w':
-		break;
-
-	case 'b':
+	default:
 		break;
 	}
+
+	//game->GetInputSystem().keyboard(key, x, y);
 }
+
 static void KeyboardUpCallback(unsigned char key, int x, int y) {
-	//
+	//game->GetInputSystem().keyboardUp(key, x, y);
 }
 void RotateCamera(float& angle, float value) {
 
@@ -103,17 +104,7 @@ void RotateCamera(float& angle, float value) {
 }
 
 static void SpecialCallback(int key, int x, int y) {
-	switch (key) {
-		// the arrow keys rotate the camera up/down/left/right
-	case GLUT_KEY_LEFT:
-		RotateCamera(config.cameraYaw, +CAMERA_STEP_SIZE); break;
-	case GLUT_KEY_RIGHT:
-		RotateCamera(config.cameraYaw, -CAMERA_STEP_SIZE); break;
-	case GLUT_KEY_UP:
-		RotateCamera(config.cameraPitch, +CAMERA_STEP_SIZE); break;
-	case GLUT_KEY_DOWN:
-		RotateCamera(config.cameraPitch, -CAMERA_STEP_SIZE); break;
-	}
+
 
 }
 static void SpecialUpCallback(int key, int x, int y) {
@@ -153,6 +144,9 @@ static void TimerCallback(int value)
 	_clock.reset();
 
 	game->Update(dT);
+
+	//proveri da li se nivo promenio
+	//ako se promenio, tj ako se n
 	UpdateCamera();
 	game->Render();
 

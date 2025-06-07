@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib platformBasic.mtl
+mtllib models/platformBasic.mtl
 v -5.146174 -0.183084 3.040569
 v 5.146174 -0.183084 3.040569
 v -5.146174 0.183084 3.040569
