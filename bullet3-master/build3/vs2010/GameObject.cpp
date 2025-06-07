@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
-GameObject::GameObject(std::string meshFileName, btDynamicsWorld& dynamicsWorld, bool isKinematic, Type type)
-    : isKinematic(isKinematic),
+GameObject::GameObject(std::string meshFileName, btDynamicsWorld& dynamicsWorld, Type type)
+    :
     objectType(type)
 {
     //set initial transform
@@ -15,7 +15,10 @@ GameObject::GameObject(std::string meshFileName, btDynamicsWorld& dynamicsWorld,
     btBoxShape* boxShape = new btBoxShape(mesh.dimensions / 2);
 
     //mass and inertia
-    float mass = isKinematic ? 0.0f : 1.0f;
+
+    //if its dynamic, its mass is 1, otherwise its either static or kinematic
+    float mass = type == Type::DYNAMIC ? 1.0f : 0.0f;
+
     btVector3 inertia(0, 0, 0);
     if (mass > 0.0f)
         boxShape->calculateLocalInertia(mass, inertia);
@@ -25,17 +28,18 @@ GameObject::GameObject(std::string meshFileName, btDynamicsWorld& dynamicsWorld,
     btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, boxShape, inertia);
     rigidBody = std::make_unique<btRigidBody>(rbInfo); 
 
-
-    if (isKinematic) {
-        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
-        rigidBody->setActivationState(DISABLE_DEACTIVATION);
-    }
-
-    if (type == Type::VISUAL) {
-        // Create a rigidbody that doesn't collide with anything
-        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() |
-            btCollisionObject::CF_NO_CONTACT_RESPONSE);
-        rigidBody->setActivationState(DISABLE_SIMULATION);
+    switch (type)
+    {
+    case DYNAMIC:
+        //default
+        break;
+    case STATIC:
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT); 
+        break;
+    case KINEMATIC:
+        rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT); 
+        rigidBody->setActivationState(DISABLE_DEACTIVATION); 
+        break;
     }
 
     rigidBody->setWorldTransform(startTransform);

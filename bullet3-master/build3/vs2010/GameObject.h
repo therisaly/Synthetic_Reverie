@@ -8,16 +8,16 @@
 
 enum Type
 {
-	VISUAL,
-	INTERACTABLE
+	DYNAMIC,
+	STATIC,
+	KINEMATIC
 };
 
 class GameObject
 {
 public:
 	GameObject() = default;
-	GameObject(std::string meshFileName, btDynamicsWorld& dynamicsWorld,
-		bool isKinematic = false, Type type = Type::VISUAL);
+	GameObject(std::string meshFileName, btDynamicsWorld& dynamicsWorld, Type type = Type::DYNAMIC);
 
 	void Render(GraphicsSystem& gfx);
 	void MoveObject(btVector3 dir, float speed, float dT);
@@ -37,10 +37,9 @@ public:
 private:
 	Mesh mesh;
 	std::unique_ptr<btRigidBody> rigidBody;
-	Type objectType = Type::VISUAL;
+	Type objectType = Type::DYNAMIC;
 	std::unique_ptr<IMovement> movement;
 
-	bool isKinematic = false;
 	bool isGrounded = false;
 };
 
