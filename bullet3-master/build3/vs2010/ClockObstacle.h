@@ -7,12 +7,15 @@ public:
 	ClockObstacle() = default;
 	ClockObstacle(int scale, btDynamicsWorld& dynamicsWorld);
 
-
+	void Render(GraphicsSystem& gfx);
 private:
+	GameObject bigWheel;
+	GameObject smallWheel;
+
 	GameObject shorterHand;
 	GameObject longerHand;
-	GameObject axisConstraint;
 
-
+	GameObject bigAxis;
+	GameObject smallAxis;
 };
 
